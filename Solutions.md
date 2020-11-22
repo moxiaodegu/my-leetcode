@@ -4,9 +4,54 @@
   3. [Split a String in Balanced Strings](#split-a-string-in-balanced-strings)
   4. [Detect Capital](#detect-capital)
   5. [Length of Last Word](#length-of-last-word)
+  6. [Check If Two String Arrays are Equivalent](#check-if-two-string-arrays-are-equivalent)
+  7. [Design Parking System](#design-parking-system)
 
   ------------------------------------------------------------
 
+### [Design Parking System](https://leetcode.com/problems/design-parking-system/)<a name="design-parking-system"></a>
+
+<strong>Design a parking system for a parking lot. The parking lot has three kinds of parking spaces: big, medium, and small, with a fixed number of slots for each size.
+
+Implement the ParkingSystem class:
+
+ParkingSystem(int big, int medium, int small) Initializes object of the ParkingSystem class. The number of slots for each parking space are given as part of the constructor.
+bool addCar(int carType) Checks whether there is a parking space of carType for the car that wants to get into the parking lot. carType can be of three kinds: big, medium, or small, which are represented by 1, 2, and 3 respectively. A car can only park in a parking space of its carType. If there is no space available, return false, else park the car in that size space and return true.
+ </strong>
+
+```javascript
+/**
+ * @param {number} big
+ * @param {number} medium
+ * @param {number} small
+ */
+var ParkingSystem = function(big, medium, small) {
+    this.spaces = [null,big,medium,small];
+};
+
+/** 
+ * @param {number} carType
+ * @return {boolean}
+ */
+ParkingSystem.prototype.addCar = function(carType) {
+    return this.spaces[carType]? this.spaces[carType]-- : 0;
+};
+
+/** 
+ * Your ParkingSystem object will be instantiated and called as such:
+ * var obj = new ParkingSystem(big, medium, small)
+ * var param_1 = obj.addCar(carType)
+ */
+```
+
+### [Check If Two String Arrays are Equivalent](https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/)<a name="check-if-two-string-arrays-are-equivalent"></a>
+<strong>Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.A string is represented by an array if the array elements concatenated in order forms the string.</strong>
+
+```javascript
+var arrayStringsAreEqual = function(word1, word2) {
+    return word1.join('') === word2.join('')
+};
+```
 ### [Length of Last Word](https://leetcode.com/problems/length-of-last-word/)<a name="length-of-last-word"></a>
 <strong>Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word (last word means the last appearing word if we loop from left to right) in the string.
 If the last word does not exist, return 0.
@@ -18,7 +63,7 @@ Note: A word is defined as a maximal substring consisting of non-space character
  * @return {number}
  */
 var lengthOfLastWord = function(s, arr = s.split(' ')) {
-    if (!s) return 0;
+    if (!s.trim()) return 0;
     return arr.reverse().find( e => e).length
 };
 ```
